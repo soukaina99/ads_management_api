@@ -18,6 +18,8 @@ class AdsManagmentViewApi(viewsets.GenericViewSet,
 
     parser_classes = (FormParser, MultiPartParser, JSONParser)
 
+    # an endpoint to deal with user ads operation(retrieve,create,destroy)
+
     def retrieve(self, request, pk=None):
         pk = self.kwargs.get('pk', None)
         data = {}

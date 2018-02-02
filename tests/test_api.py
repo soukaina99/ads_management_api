@@ -25,6 +25,7 @@ def setup_data():
 @pytest.mark.django_db
 @pytest.mark.urls('project.urls')
 def test_get_list_ads_by_type(rest_client, setup_data):
+    # test if user list ads match the ads saved for him in db
     user = setup_data['user']
     rest_client.force_authenticate(user=user)
     response = rest_client.get(reverse('ads-management-detail', kwargs={'pk': 'current'}))
@@ -39,6 +40,8 @@ def test_get_list_ads_by_type(rest_client, setup_data):
 @pytest.mark.django_db
 @pytest.mark.urls('project.urls')
 def test_save_add(rest_client, setup_data):
+    # test adding an ad for user as auto or manual
+    #assert that the user saved ads count is increased
     ad3 = G(Ad)
     ad4 = G(Ad)
     user = setup_data['user']
@@ -67,6 +70,8 @@ def test_save_add(rest_client, setup_data):
 @pytest.mark.django_db
 @pytest.mark.urls('project.urls')
 def test_destroy(rest_client, setup_data):
+    # test deleting an ad for user as auto or manual
+    #assert that the user saved ads count is decreased
     user = setup_data['user']
     ad2=setup_data['ad2']
     rest_client.force_authenticate(user=user)

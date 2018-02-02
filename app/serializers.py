@@ -6,9 +6,10 @@ from .models import UserAd, Ad, User
 
 
 class AdSerializer(serializers.ModelSerializer):
+    # serializer class to get user ads by type as json format
     class Meta:
         model = Ad
-        fields = ('title', 'image', 'description')
+        fields = ('id','title', 'image', 'description')
 
 
 class UserAdserializer(serializers.Serializer):
